@@ -1,46 +1,121 @@
-# Getting Started with Create React App
+# Dynamic Form Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A powerful and flexible form management system built with React that allows users to create, manage, and submit dynamic forms with SDMX data integration.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+### Form Management
+- Create and manage dynamic forms
+- Form builder interface with drag-and-drop functionality
+- Support for various form components and field types
+- Form validation and error handling
 
-### `npm start`
+### Data Entry
+- User-friendly form filling interface
+- Progress tracking for form completion
+- Draft saving functionality
+- Data validation before submission
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Data Management
+- View and manage form submissions
+- Edit existing submissions
+- Draft system for saving incomplete forms
+- Export data to PDF format
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### SDMX Integration
+- View form data in SDMX format
+- Interactive JSON viewer with collapse/expand functionality
+- Syntax highlighting for better readability
+- Minimap for easy navigation in large datasets
 
-### `npm test`
+## Technology Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Frontend Framework**: React 18
+- **UI Components**: Bootstrap 5
+- **Form Builder**: Form.io
+- **Code Editor**: Monaco Editor
+- **Styling**: CSS3 with Bootstrap classes
 
-### `npm run build`
+## Prerequisites
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Before you begin, ensure you have met the following requirements:
+- Node.js (v14 or higher)
+- npm (v6 or higher)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd Dynamic-Form
+```
 
-### `npm run eject`
+2. Install dependencies:
+```bash
+npm install
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+3. Start the development server:
+```bash
+npm start
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The application will be available at `http://localhost:3000`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Usage
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Creating a Form
+1. Navigate to "Tạo Form" section
+2. Use the form builder interface to add and configure fields
+3. Save the form with a name and description
 
-## Learn More
+### Entering Data
+1. Select a form from the dropdown menu
+2. Fill in the required fields
+3. Save as draft or submit the completed form
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Viewing Submissions
+1. Navigate to the "Submissions" tab
+2. View list of all submissions
+3. Click on actions to:
+   - View details
+   - Edit submission
+   - View SDMX data
+   - Export to PDF
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Managing Drafts
+1. Access saved drafts in the "Drafts" tab
+2. Continue editing or delete drafts
+3. Convert drafts to final submissions
+
+## Project Structure
+
+```
+src/
+├── components/
+│   ├── FormBuilder/       # Form creation components
+│   ├── FormSelector/      # Form selection and management
+│   └── common/           # Shared components
+├── utils/                # Utility functions
+├── types/                # TypeScript type definitions
+├── hooks/               # Custom React hooks
+└── App.tsx              # Main application component
+```
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Contact
+
+Your Name - your.email@example.com
+
+Project Link: [https://github.com/yourusername/Dynamic-Form](https://github.com/yourusername/Dynamic-Form)
