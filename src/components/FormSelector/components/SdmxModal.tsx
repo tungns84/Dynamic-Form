@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Editor from "@monaco-editor/react";
 
 interface SdmxModalProps {
@@ -12,7 +12,18 @@ const SdmxModal: React.FC<SdmxModalProps> = ({
   sdmxData,
   onClose
 }) => {
+  const [copySuccess, setCopySuccess] = useState<boolean>(false);
+
   if (!isOpen) return null;
+
+  const handleCopy = () => {
+    const jsonString = JSON.stringify(sdmxData, null, 2);
+    navigator.clipboard.writeText(jsonString).then(() => {
+      setCopySuccess(true);
+      // Reset copy success message after 2 seconds
+      setTimeout(() => setCopySuccess(false), 2000);
+    });
+  };
 
   return (
     <div className="modal fade show" style={{ 
@@ -34,8 +45,33 @@ const SdmxModal: React.FC<SdmxModalProps> = ({
         maxWidth: '1200px'
       }}>
         <div className="modal-content">
-          <div className="modal-header">
+          <div className="modal-header position-relative">
             <h5 className="modal-title">Dữ liệu SDMX</h5>
+            <div style={{ 
+              position: 'absolute', 
+              left: '50%', 
+              top: '50%', 
+              transform: 'translate(-50%, -50%)'
+            }}>
+              <button
+                type="button"
+                className="btn btn-outline-primary"
+                onClick={handleCopy}
+                title="Copy to clipboard"
+              >
+                {copySuccess ? (
+                  <>
+                    <i className="bi bi-check-lg me-1"></i>
+                    Copied!
+                  </>
+                ) : (
+                  <>
+                    <i className="bi bi-clipboard me-1"></i>
+                    Copy
+                  </>
+                )}
+              </button>
+            </div>
             <button 
               type="button" 
               className="btn-close" 
