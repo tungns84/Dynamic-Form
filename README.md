@@ -46,7 +46,7 @@ Before you begin, ensure you have met the following requirements:
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
+git clone https://github.com/tungns84/Dynamic-Form.git
 cd Dynamic-Form
 ```
 
@@ -105,17 +105,17 @@ src/
 ## Contributing
 
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
 5. Open a Pull Request
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the Apache License - see the LICENSE file for details.
 
 ## Contact
 
-Your Name - your.email@example.com
+Your Name - tungns250284@gmail.com
 
-Project Link: [https://github.com/yourusername/Dynamic-Form](https://github.com/yourusername/Dynamic-Form)
+Project Link: [https://github.com/tungns84/Dynamic-Form](https://github.com/tungns84/Dynamic-Form)
