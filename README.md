@@ -46,7 +46,7 @@ Before you begin, ensure you have met the following requirements:
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/tungns84/Dynamic-Form.git
+git clone `https://github.com/tungns84/Dynamic-Form.git`
 cd Dynamic-Form
 ```
 
@@ -116,6 +116,6 @@ This project is licensed under the Apache License - see the LICENSE file for det
 
 ## Contact
 
-Your Name - tungns250284@gmail.com
+Email - tungns250284@gmail.com
 
 Project Link: [https://github.com/tungns84/Dynamic-Form](https://github.com/tungns84/Dynamic-Form)
