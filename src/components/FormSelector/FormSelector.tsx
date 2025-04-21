@@ -6,6 +6,7 @@ import InputTab from './components/InputTab';
 import DraftsTab from './components/DraftsTab';
 import SubmissionsTab from './components/SubmissionsTab';
 import ViewDetailsModal from './components/ViewDetailsModal';
+import SdmxModal from './components/SdmxModal';
 import Notifications from './components/Notifications';
 import useNotification from './hooks/useNotification';
 import { calculateProgress, getSchemaComponents } from './utils/progressCalculator';
@@ -47,6 +48,9 @@ const FormSelector: React.FC = () => {
   
   // Notification system
   const { notifications, showNotification } = useNotification();
+
+  const [showSdmxModal, setShowSdmxModal] = useState<boolean>(false);
+  const [sdmxData, setSdmxData] = useState<any>(null);
 
   // === EFFECTS ===
   /**
@@ -362,48 +366,9 @@ const FormSelector: React.FC = () => {
     
     try {
       setIsLoading(true);
-      const sdmxData = await formApi.getSdmxData(submissionId);
-      
-      // Tạo modal hiển thị dữ liệu SDMX với cú pháp JSON đẹp
-      const prettyJson = JSON.stringify(sdmxData, null, 2);
-      
-      // Mở modal xem SDMX
-      const modal = document.createElement('div');
-      modal.className = 'modal fade show';
-      modal.style.display = 'block';
-      modal.innerHTML = `
-        <div class="modal-backdrop fade show"></div>
-        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Dữ liệu SDMX</h5>
-              <button type="button" class="btn-close" id="close-modal-button"></button>
-            </div>
-            <div class="modal-body">
-              <pre class="bg-light p-3 rounded" style="max-height: 60vh; overflow: auto;">${prettyJson}</pre>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" id="close-button">Đóng</button>
-            </div>
-          </div>
-        </div>
-      `;
-      
-      document.body.appendChild(modal);
-      
-      // Xử lý đóng modal
-      const closeBtn = document.getElementById('close-modal-button');
-      const closeButton = document.getElementById('close-button');
-      const backdrop = modal.querySelector('.modal-backdrop');
-      
-      const closeModal = () => {
-        document.body.removeChild(modal);
-      };
-      
-      if (closeBtn) closeBtn.addEventListener('click', closeModal);
-      if (closeButton) closeButton.addEventListener('click', closeModal);
-      if (backdrop) backdrop.addEventListener('click', closeModal);
-      
+      const data = await formApi.getSdmxData(submissionId);
+      setSdmxData(data);
+      setShowSdmxModal(true);
       showNotification('success', 'Dữ liệu SDMX đã được tải thành công.');
     } catch (error) {
       console.error('Lỗi khi lấy dữ liệu SDMX:', error);
@@ -411,6 +376,11 @@ const FormSelector: React.FC = () => {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleCloseSdmxModal = () => {
+    setShowSdmxModal(false);
+    setSdmxData(null);
   };
 
   /**
@@ -566,6 +536,13 @@ const FormSelector: React.FC = () => {
         isLoading={isLoading}
         onClose={handleCloseViewModal}
         onExportToPdf={handleExportToPdf}
+      />
+
+      {/* SDMX data modal */}
+      <SdmxModal
+        isOpen={showSdmxModal}
+        sdmxData={sdmxData}
+        onClose={handleCloseSdmxModal}
       />
       
       {/* Notifications */}

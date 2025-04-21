@@ -17,9 +17,22 @@ const ViewDetailsModal: React.FC<ViewDetailsModalProps> = ({
   if (!isOpen || !submission) return null;
 
   return (
-    <div className="modal fade show" style={{ display: 'block' }} tabIndex={-1}>
-      <div className="modal-backdrop fade show" onClick={onClose}></div>
-      <div className="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+    <div className="modal fade show" style={{ 
+      display: 'block',
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      backgroundColor: 'rgba(0, 0, 0, 0.5)',
+      zIndex: 1050,
+      overflow: 'auto'
+    }} onClick={(e) => e.target === e.currentTarget && onClose()} tabIndex={-1}>
+      <div className="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" style={{
+        position: 'relative',
+        margin: '1.75rem auto',
+        zIndex: 1055
+      }}>
         <div className="modal-content">
           <div className="modal-header">
             <h5 className="modal-title">Chi tiết dữ liệu form: {selectedForm.name}</h5>
